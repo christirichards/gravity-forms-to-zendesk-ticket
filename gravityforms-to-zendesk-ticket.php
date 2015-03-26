@@ -2,7 +2,7 @@
 
 // Paste or reference this filter into your theme's functions.php file
 
-add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); 
+add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); // Change '3' to your form ID
 
 /*add_action("gform_after_submission_3", "gform_disable_post_creation", 20, 2); 
     function gform_disable_post_creation( $entry, $form ) {
