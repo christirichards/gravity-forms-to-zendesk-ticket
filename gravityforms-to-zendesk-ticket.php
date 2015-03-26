@@ -87,34 +87,34 @@ add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); //
         // print_r($output); // DEBUG
         
         return $decoded;
-    }e
+    }
 
-function gform_create_zendesk_ticket($entry, $form){
+    function gform_create_zendesk_ticket($entry, $form){
 
-    $binaryFile = file_get_contents(rgar( $entry, '15' ));
+        $binaryFile = file_get_contents(rgar( $entry, '15' ));
 
-    $ext = pathinfo(rgar( $entry, '15' ), PATHINFO_EXTENSION);  // Upload field ID
-    $upload = curlUpload("/uploads.json", $binaryFile, 'screenshot.'.$ext);  // Attachments will have the name screenshot.[$ext]
+        $ext = pathinfo(rgar( $entry, '15' ), PATHINFO_EXTENSION);  // Upload field ID
+        $upload = curlUpload("/uploads.json", $binaryFile, 'screenshot.'.$ext);  // Attachments will have the name screenshot.[$ext]
 
-    $token = $upload['upload']['token'];
- 
-    $create = json_encode(
-        array(
-            'ticket' => array(
-                'subject' => rgar( $entry, '3' ), // Subject or form name ID - up to you!
-                'comment' => array(
-                    'body' => rgar( $entry, '6' ), // Textarea field ID
-                    'uploads' => $token,
-                ),
-                'requester' => array(
-                    'name' => rgar( $entry, '1.3' ). ' ' .rgar( $entry, '1.6' ), // Name fields ID
-                    'email' => rgar( $entry, '2' ) // E-mail field ID
+        $token = $upload['upload']['token'];
+     
+        $create = json_encode(
+            array(
+                'ticket' => array(
+                    'subject' => rgar( $entry, '3' ), // Subject or form name ID - up to you!
+                    'comment' => array(
+                        'body' => rgar( $entry, '6' ), // Textarea field ID
+                        'uploads' => $token,
+                    ),
+                    'requester' => array(
+                        'name' => rgar( $entry, '1.3' ). ' ' .rgar( $entry, '1.6' ), // Name fields ID
+                        'email' => rgar( $entry, '2' ) // E-mail field ID
+                    )
                 )
             )
-        )
-    );
+        );
 
-    return curlWrap("/tickets.json", $create, "POST");
-}    
+        return curlWrap("/tickets.json", $create, "POST");
+    }    
 
 ?>
