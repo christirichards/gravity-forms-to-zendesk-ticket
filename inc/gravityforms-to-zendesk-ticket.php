@@ -1,17 +1,26 @@
 <?php
 
-// Paste or reference this filter into your theme's functions.php file
+/* GravityForms to Zendesk Ticket
 
-add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); // Change '3' to your form ID
+GravityForms to Zendesk Ticket is a simple Wordpress functions.php filter to pass GravityForms fields to a Zendesk ticket, including attachments. 
+It utilizes the Zendesk v2 API, PHP, and cURL.
 
-/*add_action("gform_after_submission_3", "gform_disable_post_creation", 20, 2); 
+Author: Christi Richards
+URL: http://www.christirichards.com
+Github: https://github.com/christirichards/gravityforms-to-zendesk-ticket
+*/
+
+add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); // Change '3' to your GravityForm form ID
+
+add_action("gform_after_submission_3", "gform_disable_post_creation", 20, 2); // OPTIONAL: Do not create entries from submissions - Change '3' to your GravityForm form ID
+    
     function gform_disable_post_creation( $entry, $form ) {
         GFAPI::delete_entry( $entry['id'] );
-    } */ // Optional: Disable the creation of backend posts
+    } 
 
     define("ZDAPIKEY", "APIKEYHERE"); // Zendesk API Key
     define("ZDUSER", "user@email.com"); // Zendesk User
-    define("ZDURL", "https://mydomain.zendesk.com/api/v2"); // Zendesk URL
+    define("ZDURL", "https://domain.zendesk.com/api/v2"); // Zendesk URL (Do not put a trailing slash!)
 
     function curlWrap($url, $json, $action) {
     
@@ -94,7 +103,7 @@ add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); //
         $binaryFile = file_get_contents(rgar( $entry, '15' ));
 
         $ext = pathinfo(rgar( $entry, '15' ), PATHINFO_EXTENSION);  // Upload field ID
-        $upload = curlUpload("/uploads.json", $binaryFile, 'screenshot.'.$ext);  // Attachments will have the name screenshot.[$ext]
+        $upload = curlUpload("/uploads.json", $binaryFile, 'screenshot.'.$ext);  // Attachments will have the prettyname screenshot.[$ext]
 
         $token = $upload['upload']['token'];
      

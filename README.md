@@ -11,24 +11,24 @@ You need a working Wordpress installation, GravityForms plugin installed and at 
 
 ### To Use
 
-- Simply reference the filter file using an include in your own Wordpress theme functions.php file or cut/paste directly into the Wordpress theme functions.php file itself.
+- Include the filter file from your own Wordpress theme's function.php file or cut/paste the contents of inc/gravityforms-to-zendesk-ticket.php into your own functions.php file.
 
 - Update the Zendesk API credentials in the script.
 
-- Reference the correct GravityForm's form ID in the filter reference.
+- Reference the correct GravityForm form ID in the filter reference.
 
 - Reference the appropriate GravityForm form field IDs in the ticket generation portion to send to Zendesk.
 
 - **Please note: this script is for one attachment per ticket, for multi-file uploads the script will need to be modified to split the request [currently on the Todo]**
 
-### Todo
+### To Do
 
- - Split requests to handle multiple file uploads per ticket
+ - Split requests to handle multiple file uploads per ticket.
 
 License
 ----
 
 MIT
 
-[Christi Richards]:http://www.christirichards.com/
-[@christirichards]:http://twitter.com/christirichards
+[Christi Richards](http://www.christirichards.com)
+[@christirichards](http://twitter.com/christirichards)
