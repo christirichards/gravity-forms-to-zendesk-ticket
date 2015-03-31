@@ -25,10 +25,16 @@ You need a working Wordpress installation, GravityForms plugin installed and at 
 
  - Split requests to handle multiple file uploads per ticket.
 
+ - Create an official GravityForms add-on using the [GravityForms API](http://www.gravityhelp.com/documentation/gravity-forms/extending-gravity-forms/api/gravity-forms-api/) using feeds for easier form handling.
+
 License
 ----
 
 MIT
 
+Contact
+----
+
 [Christi Richards](http://www.christirichards.com)
+
 [@christirichards](http://twitter.com/christirichards)
