@@ -1,16 +1,35 @@
 <?php
 
-/* GravityForms to Zendesk Ticket
-
-GravityForms to Zendesk Ticket is a simple Wordpress functions.php filter to pass GravityForms fields to a Zendesk ticket, including attachments. 
+/*
+Project Name: Gravity Forms to Zendesk Ticket (functions.php version)
+Github URI: https://github.com/christirichards/gravity-forms-to-zendesk-ticket/
+Description: Gravity Forms to Zendesk Ticket is a simple Wordpress functions.php filter to pass Gravity Forms fields to a Zendesk ticket, including attachments. 
 It utilizes the Zendesk v2 API, PHP, and cURL.
-
+Version: 1.0.0
 Author: Christi Richards
-URL: http://www.christirichards.com
-Github: https://github.com/christirichards/gravityforms-to-zendesk-ticket
+Author URI: http://www.christirichards.com
+
+------------------------------------------------------------------------
+Copyright 2015 - Christi Richards
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); // Change '3' to your GravityForm form ID
+//------------------------------------------
+
+add_action("gform_after_submission_3", "gform_create_zendesk_ticket", 10, 2); // Change '3' to your Gravity Form form ID
 
 add_action("gform_after_submission_3", "gform_disable_post_creation", 20, 2); // OPTIONAL: Do not create entries from submissions - Change '3' to your GravityForm form ID
     
