@@ -2,6 +2,8 @@
 
 Gravity Forms to Zendesk Ticket is a simple Wordpress functions.php filter to pass Gravity Forms fields to a Zendesk ticket, including attachments.  It utilizes the [Zendesk v2 API](https://developer.zendesk.com/rest_api/docs/core/introduction), PHP, and cURL.
 
+This functions.php filter was created for theme developers that want to integrate in this functionality by default.  If you're looking to integrate Zendesk functionality by add-on that is not dependent on a theme, please see the [Gravity Forms Zendesk Add-On](https://github.com/christirichards/gravity-forms-zendesk) (in development).
+
 ### Version
 1.0.0
 
@@ -25,7 +27,7 @@ You need a working Wordpress installation, Gravity Forms plugin installed and at
 
  - Split requests to handle multiple file uploads per ticket.
 
- - Create an official Gravity Forms add-on using the [GravityForms API](http://www.gravityhelp.com/documentation/gravity-forms/extending-gravity-forms/api/gravity-forms-api/) using feeds for easier form handling. (Separate GitHub project in development!)
+ - Add in a Wordpress settings panel to easily add in Zendesk API key, e-mail, and subdomain.
 
 License
 ----
